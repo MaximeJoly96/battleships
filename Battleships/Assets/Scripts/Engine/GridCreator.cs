@@ -7,6 +7,7 @@ namespace Battleships.Engine
     {
         private const int COLUMNS = 15;
         private const int ROWS = 10;
+        private const float LABEL_SHIFT = 60.0f; // pixels
 
         [SerializeField]
         private GameObject _baseTile;
@@ -51,7 +52,7 @@ namespace Battleships.Engine
                 }
 
                 float cellHeight = _numbersLane.GetComponent<GridLayoutGroup>().cellSize.y;
-                _numbersLane.transform.Translate(new Vector2(0.0f, cellHeight * ROWS / 2.0f + 60.0f));
+                _numbersLane.transform.Translate(new Vector2(0.0f, cellHeight * ROWS / 2.0f + LABEL_SHIFT));
             }
         }
 
@@ -63,11 +64,11 @@ namespace Battleships.Engine
                 {
                     GameObject go = Instantiate(_laneTag, _lettersLane);
                     Text label = go.GetComponent<Text>();
-                    label.text = ((char) (65 + i)).ToString();
+                    label.text = ((char) (65 + i)).ToString(); // A is 65 in ASCII
                 }
 
                 float cellWidth = _lettersLane.GetComponent<GridLayoutGroup>().cellSize.x;
-                _lettersLane.transform.Translate(new Vector2(-cellWidth * COLUMNS / 2.0f -60.0f, 0.0f));
+                _lettersLane.transform.Translate(new Vector2(-cellWidth * COLUMNS / 2.0f - LABEL_SHIFT, 0.0f));
             }
         }
     }
