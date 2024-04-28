@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 namespace Battleships.Engine
 {
@@ -22,12 +21,12 @@ namespace Battleships.Engine
 
         private void Awake()
         {
-            StartCoroutine(CreateGrid());
+            CreateGrid();
             CreateNumbers();
             CreateLetters();
         }
 
-        private IEnumerator CreateGrid()
+        private void CreateGrid()
         {
             if(_baseTile)
             {
@@ -40,7 +39,6 @@ namespace Battleships.Engine
 
                         cell.Row = i;
                         cell.Column = j;
-                        yield return new WaitForEndOfFrame();
                     }
                 }
             }
@@ -76,6 +74,12 @@ namespace Battleships.Engine
                 float cellWidth = _lettersLane.GetComponent<GridLayoutGroup>().cellSize.x;
                 _lettersLane.transform.Translate(new Vector2(-cellWidth * COLUMNS / 2.0f - LABEL_SHIFT, 0.0f));
             }
+        }
+
+        public Cell GetCellFromScreenPosition(Vector2 position)
+        {
+            Debug.Log(position);
+            return null;
         }
     }
 }

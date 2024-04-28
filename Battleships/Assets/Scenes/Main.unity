@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 863940701}
   - component: {fileID: 863940703}
   - component: {fileID: 863940702}
+  - component: {fileID: 863940704}
   m_Layer: 5
   m_Name: Battleship
   m_TagString: Untagged
@@ -344,6 +345,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863940700}
   m_CullTransparentMesh: 1
+--- !u!114 &863940704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863940700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593b2f485486c414f88df09c44e05e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1
 --- !u!1 &937305021
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +369,7 @@ GameObject:
   - component: {fileID: 937305022}
   - component: {fileID: 937305024}
   - component: {fileID: 937305023}
+  - component: {fileID: 937305025}
   m_Layer: 5
   m_Name: Carrier
   m_TagString: Untagged
@@ -420,6 +435,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937305021}
   m_CullTransparentMesh: 1
+--- !u!114 &937305025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937305021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593b2f485486c414f88df09c44e05e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
 --- !u!1 &1092566625
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +460,7 @@ GameObject:
   - component: {fileID: 1092566629}
   - component: {fileID: 1092566628}
   - component: {fileID: 1092566627}
+  - component: {fileID: 1092566630}
   m_Layer: 5
   m_Name: BoatContainer
   m_TagString: Untagged
@@ -517,6 +546,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092566625}
   m_CullTransparentMesh: 1
+--- !u!114 &1092566630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092566625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74be4e3cd0ec2274fb91fbea6dc15931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shipContainer: {fileID: 1092566626}
+  _baseCanvas: {fileID: 1218004469}
+  _gridCreator: {fileID: 2031318562}
 --- !u!1 &1218004466
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +676,7 @@ GameObject:
   - component: {fileID: 1381478322}
   - component: {fileID: 1381478324}
   - component: {fileID: 1381478323}
+  - component: {fileID: 1381478325}
   m_Layer: 5
   m_Name: Cruiser
   m_TagString: Untagged
@@ -697,6 +742,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381478321}
   m_CullTransparentMesh: 1
+--- !u!114 &1381478325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381478321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593b2f485486c414f88df09c44e05e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 2
 --- !u!1 &1510341864
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,6 +894,7 @@ GameObject:
   - component: {fileID: 1838376092}
   - component: {fileID: 1838376094}
   - component: {fileID: 1838376093}
+  - component: {fileID: 1838376095}
   m_Layer: 5
   m_Name: Destroyer
   m_TagString: Untagged
@@ -901,6 +960,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838376091}
   m_CullTransparentMesh: 1
+--- !u!114 &1838376095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838376091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593b2f485486c414f88df09c44e05e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 4
 --- !u!1 &1852655935
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +984,7 @@ GameObject:
   - component: {fileID: 1852655936}
   - component: {fileID: 1852655938}
   - component: {fileID: 1852655937}
+  - component: {fileID: 1852655939}
   m_Layer: 5
   m_Name: Submarine
   m_TagString: Untagged
@@ -977,6 +1050,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852655935}
   m_CullTransparentMesh: 1
+--- !u!114 &1852655939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852655935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593b2f485486c414f88df09c44e05e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 3
 --- !u!1 &2031318558
 GameObject:
   m_ObjectHideFlags: 0
