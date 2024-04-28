@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Battleships.Engine
 {
@@ -21,20 +22,25 @@ namespace Battleships.Engine
 
         private void Awake()
         {
-            CreateGrid();
+            StartCoroutine(CreateGrid());
             CreateNumbers();
             CreateLetters();
         }
 
-        private void CreateGrid()
+        private IEnumerator CreateGrid()
         {
             if(_baseTile)
             {
-                for(int i = 0; i < COLUMNS; i++)
+                for(int i = 0; i < ROWS; i++)
                 {
-                    for(int j = 0; j < ROWS; j++)
+                    for(int j = 0; j < COLUMNS; j++)
                     {
-                        Instantiate(_baseTile, transform);
+                        GameObject go = Instantiate(_baseTile, transform);
+                        Cell cell = go.GetComponent<Cell>();
+
+                        cell.Row = i;
+                        cell.Column = j;
+                        yield return new WaitForEndOfFrame();
                     }
                 }
             }
