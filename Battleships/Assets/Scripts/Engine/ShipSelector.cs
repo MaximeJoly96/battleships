@@ -48,7 +48,9 @@ namespace Battleships.Engine
         {
             if(_gridCreator)
             {
-                _gridCreator.GetCellFromScreenPosition(position);
+                Cell cell = _gridCreator.GetCellFromScreenPosition(position);
+                _currentBlueprint.Placing = false;
+                _currentBlueprint.transform.position = cell.transform.position;
             }
         }
     }

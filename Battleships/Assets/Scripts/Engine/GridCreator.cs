@@ -78,8 +78,22 @@ namespace Battleships.Engine
 
         public Cell GetCellFromScreenPosition(Vector2 position)
         {
-            Debug.Log(position);
-            return null;
+            Cell[] cells = FindObjectsOfType<Cell>();
+            Cell closestCell = cells[0];
+
+            float minDistance = float.MaxValue;
+
+            for(int i = 0; i < cells.Length; i++)
+            {
+                float distance = Vector2.Distance(position, cells[i].transform.position);
+                if(distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestCell = cells[i];
+                }
+            }
+
+            return closestCell;
         }
     }
 }

@@ -8,18 +8,21 @@ namespace Battleships.Engine
     public class ShipBlueprint : MonoBehaviour, IPointerDownHandler
     {
         public UnityEvent<Vector2> AttemptToPlaceBlueprint { get; set; }
+        public bool Placing { get; set; }
 
         private void Awake()
         {
             SetTransparent();
             RemoveShipComponent();
+            Placing = true;
 
             AttemptToPlaceBlueprint = new UnityEvent<Vector2>();
         }
 
         private void Update()
         {
-            transform.position = Input.mousePosition;
+            if(Placing)
+                transform.position = Input.mousePosition;
         }
 
         private void SetTransparent()
