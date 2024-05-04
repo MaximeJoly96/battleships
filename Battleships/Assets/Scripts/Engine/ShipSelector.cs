@@ -13,44 +13,41 @@ namespace Battleships.Engine
         [SerializeField]
         private GridCreator _gridCreator;
 
-        private List<Ship> _ships;
-        private ShipBlueprint _currentBlueprint;
+        private GameController _gameController;
 
-        private void Awake()
+        public void Init(GameController gc)
         {
-            GetAllShips();
-        }
+            _gameController = gc;
 
-        private void GetAllShips()
-        {
-            _ships = new List<Ship>();
-
-            if(_shipContainer)
+            if (_shipContainer)
             {
-                foreach(Transform child in _shipContainer)
+                foreach (Transform child in _shipContainer)
                 {
                     Ship ship = child.GetComponent<Ship>();
                     ship.Init();
                     ship.ShipClicked.AddListener(SelectShip);
-                    _ships.Add(ship);
                 }
             }
         }
 
-        private void SelectShip(Ship.Type type)
+        private void SelectShip(Ship ship)
         {
-            Ship blueprint = Instantiate(_ships.FirstOrDefault(s => s.ShipType == type), _baseCanvas.transform);
-            _currentBlueprint = blueprint.gameObject.AddComponent<ShipBlueprint>();
-            _currentBlueprint.AttemptToPlaceBlueprint.AddListener(TryToPlaceBlueprint);
+            ShipBlueprint blueprint = ship.gameObject.AddComponent<ShipBlueprint>();
+            blueprint.AttemptToPlaceBlueprint.AddListener(TryToPlaceBlueprint);
+
+            ship.Placing = true;
+            _gameController.UpdateState(GameController.GameState.PlacingShip);
         }
 
-        private void TryToPlaceBlueprint(Vector2 position)
+        private void TryToPlaceBlueprint(ShipBlueprint blueprint)
         {
             if(_gridCreator)
             {
-                Cell cell = _gridCreator.GetCellFromScreenPosition(position);
-                _currentBlueprint.Placing = false;
-                _currentBlueprint.transform.position = cell.transform.position;
+                Ship ship = blueprint.GetComponent<Ship>();
+                ship.Placing = false;
+                _gridCreator.PlaceShip(blueprint.transform.position, blueprint);
+                blueprint.FinishPlacement();
+                Destroy(blueprint);
             }
         }
     }

@@ -13,11 +13,18 @@ namespace Battleships.Engine
         private Type _type;
 
         public Type ShipType { get { return _type; } }
-        public UnityEvent<Type> ShipClicked { get; private set; }
+        public UnityEvent<Ship> ShipClicked { get; private set; }
+        public bool Placing { get; set; }
 
         public void Init()
         {
-            ShipClicked = new UnityEvent<Type>();
+            ShipClicked = new UnityEvent<Ship>();
+        }
+
+        private void Update()
+        {
+            if (Placing)
+                transform.position = Input.mousePosition;
         }
 
         public int GetSize()
@@ -40,7 +47,8 @@ namespace Battleships.Engine
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            ShipClicked.Invoke(_type);
+            if(!Placing)
+                ShipClicked.Invoke(this);
         }
     }
 }

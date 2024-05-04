@@ -7,22 +7,14 @@ namespace Battleships.Engine
 {
     public class ShipBlueprint : MonoBehaviour, IPointerDownHandler
     {
-        public UnityEvent<Vector2> AttemptToPlaceBlueprint { get; set; }
-        public bool Placing { get; set; }
+        public UnityEvent<ShipBlueprint> AttemptToPlaceBlueprint { get; set; }
+        public Ship.Type ShipType { get; set; }
 
         private void Awake()
         {
             SetTransparent();
-            RemoveShipComponent();
-            Placing = true;
 
-            AttemptToPlaceBlueprint = new UnityEvent<Vector2>();
-        }
-
-        private void Update()
-        {
-            if(Placing)
-                transform.position = Input.mousePosition;
+            AttemptToPlaceBlueprint = new UnityEvent<ShipBlueprint>();
         }
 
         private void SetTransparent()
@@ -33,17 +25,17 @@ namespace Battleships.Engine
                 img.color = new Color(img.color.r, img.color.g, img.color.b, 0.5f);
         }
 
-        private void RemoveShipComponent()
+        public void FinishPlacement()
         {
-            Ship ship = GetComponent<Ship>();
+            Image img = GetComponent<Image>();
 
-            if (ship)
-                Destroy(ship);
+            if (img)
+                img.color = new Color(img.color.r, img.color.g, img.color.b, 1.0f);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            AttemptToPlaceBlueprint.Invoke(transform.position);
+            AttemptToPlaceBlueprint.Invoke(this);
         }
     }
 }

@@ -19,8 +19,12 @@ namespace Battleships.Engine
         [SerializeField]
         private Transform _lettersLane;
 
-        private void Awake()
+        private GameController _gameController;
+
+        public void Init(GameController gc)
         {
+            _gameController = gc;
+
             CreateGrid();
             CreateNumbers();
             CreateLetters();
@@ -94,6 +98,36 @@ namespace Battleships.Engine
             }
 
             return closestCell;
+        }
+
+        public void PlaceShip(Vector2 position, ShipBlueprint blueprint)
+        {
+            Cell cell = GetCellFromScreenPosition(position);
+            Vector2 cellPosition = cell.transform.position;
+
+            if(blueprint.ShipType == Ship.Type.Battleship || blueprint.ShipType == Ship.Type.Destroyer)
+            {
+                float cellHeight = _lettersLane.GetComponent<GridLayoutGroup>().cellSize.y;
+                cellPosition.y += cellHeight / 2.0f;
+            }
+
+            blueprint.transform.position = cellPosition;
+
+            switch (blueprint.ShipType)
+            {
+                case Ship.Type.Destroyer:
+                    break;
+                case Ship.Type.Battleship:
+                    break;
+                case Ship.Type.Carrier:
+                    break;
+                case Ship.Type.Cruiser:
+                    break;
+                case Ship.Type.Submarine:
+                    break;
+            }
+
+            _gameController.UpdateState(GameController.GameState.WaitingForPlacement);
         }
     }
 }
