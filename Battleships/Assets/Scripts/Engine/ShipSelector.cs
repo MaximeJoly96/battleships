@@ -36,6 +36,7 @@ namespace Battleships.Engine
             blueprint.AttemptToPlaceBlueprint.AddListener(TryToPlaceBlueprint);
 
             ship.Placing = true;
+            blueprint.ShipType = ship.ShipType;
             _gameController.UpdateState(GameController.GameState.PlacingShip);
         }
 
@@ -45,7 +46,7 @@ namespace Battleships.Engine
             {
                 Ship ship = blueprint.GetComponent<Ship>();
                 ship.Placing = false;
-                _gridCreator.PlaceShip(blueprint.transform.position, blueprint);
+                _gridCreator.PlaceShip(ship);
                 blueprint.FinishPlacement();
                 Destroy(blueprint);
             }

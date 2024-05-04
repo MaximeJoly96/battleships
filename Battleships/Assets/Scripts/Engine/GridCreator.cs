@@ -100,9 +100,9 @@ namespace Battleships.Engine
             return closestCell;
         }
 
-        public void PlaceShip(Vector2 position, ShipBlueprint blueprint)
+        public void PlaceShip(Ship ship)
         {
-            Cell cell = GetCellFromScreenPosition(position);
+            Cell cell = GetCellFromScreenPosition(ship.transform.position);
             Vector2 cellPosition = cell.transform.position;
 
             if(blueprint.ShipType == Ship.Type.Battleship || blueprint.ShipType == Ship.Type.Destroyer)
